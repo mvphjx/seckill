@@ -8,7 +8,7 @@
         http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <!--配置自动扫描service包下的注解-->
-    <context:component-scan base-package="com.suny.service"/>
+    <context:component-scan base-package="com.han.service"/>
 
     <!--配置事物-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
