@@ -24,6 +24,8 @@
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
+    <!-- 自动将POJO对象转换为JSON对象 -->
+    <bean id="jackson_hmc"          class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
 </beans>
 
 

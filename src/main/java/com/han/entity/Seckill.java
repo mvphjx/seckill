@@ -1,5 +1,7 @@
 package com.han.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -17,10 +19,13 @@ public class Seckill implements Serializable {
     /* 秒杀的商品编号 */
     private int number;
     /* 开始秒杀的时间 */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime startTime;
     /* 结束秒杀的时间 */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime endTime;
     /* 创建的时间 */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createTIme;
 
     public Seckill() {

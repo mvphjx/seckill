@@ -9,6 +9,8 @@ import com.han.service.interfaces.SeckillService;
 import com.han.dto.SeckillResult;
 import com.han.entity.Seckill;
 import com.han.enums.SeckillStatEnum;
+import com.han.util.JsonUtil;
+import com.han.util.json.TextInfoUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,6 +42,7 @@ public class SeckillController {
     public String list(Model model) {
         List<Seckill> seckillList = seckillService.getSeckillList();
         model.addAttribute("list", seckillList);
+        model.addAttribute("jsonList", TextInfoUtil.createJsonTextInfoUtil().convertToString(seckillList));
         return "list";
     }
     /*
