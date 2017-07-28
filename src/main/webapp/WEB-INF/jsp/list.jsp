@@ -53,6 +53,7 @@
 <script>
     //没有使用ajax  为了兼容换行等特殊字符，先这样处理。
     var  list = JSON.parse($("#jsonList").html());
+    //组件
     //循环
     var app4 = new Vue({
         el: '#app-4',
