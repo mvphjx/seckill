@@ -12,14 +12,15 @@
     </resultMap>
     <update id="reduceNumber">
         UPDATE seckill
-        SET "NUMBER" = "NUMBER" - 1
+        SET number = number - 1
         WHERE seckill_id = #{seckillId}
-              AND start_time <![CDATA[
+        AND start_time <![CDATA[
         <=
         ]]> #{killTime}
         AND end_time >= #{killTime}
-        AND "NUMBER" > 0
+        AND number > 0
     </update>
+
     <select id="queryById" resultType="com.han.entity.Seckill">
         SELECT *
         FROM seckill  s
@@ -34,18 +35,19 @@
     <!--s.number,-->
     <!--s.success_killed-->
     <select id="queryAll" resultMap="BaseResultMap">
-        select *
-        from (SELECT s.*, ROWNUM FROM seckill s ORDER BY create_time DESC) ss
-        where ss."ROWNUM" > 0
+        SELECT *
+        FROM seckill  s
+        ORDER BY create_time DESC
+        LIMIT #{offset}, #{limit}
     </select>
 
     <!--调用储存过程-->
     <select id="killByProcedure" statementType="CALLABLE">
         CALL execute_seckill(
-                #{seckillId,jdbcType=BIGINT,mode=IN},
-                #{phone,jdbcType=BIGINT,mode=IN},
-                #{killTime,jdbcType=TIMESTAMP,mode=IN},
-                #{result,jdbcType=INTEGER,mode=OUT}
+        #{seckillId,jdbcType=BIGINT,mode=IN},
+        #{phone,jdbcType=BIGINT,mode=IN},
+        #{killTime,jdbcType=TIMESTAMP,mode=IN},
+        #{result,jdbcType=INTEGER,mode=OUT}
         )
     </select>
 </mapper>
