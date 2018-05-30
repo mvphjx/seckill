@@ -1,3 +1,4 @@
+USE seckill;
 -- 秒杀执行储存过程
 DELIMITER $$ -- console ; 转换为
 $$

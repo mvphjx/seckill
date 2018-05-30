@@ -42,7 +42,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.39</version>
+            <version>8.0.11</version>
         </dependency>
         <dependency>
             <groupId>org.apache</groupId>
@@ -171,17 +171,27 @@
     </dependencies>
 
     <build>
-        <finalName>abisweb</finalName>
+        <finalName>seckill</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.0.2</version>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.1.0</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+
+                    <packagingExcludes>WEB-INF/classes/**/**,WEB-INF/jsp/**/**</packagingExcludes>
+
                 </configuration>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>com/han/dao/1.mp4</exclude>
+                </excludes>
+            </resource>
+        </resources>
     </build>
 </project>
